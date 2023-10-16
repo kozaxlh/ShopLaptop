@@ -2,6 +2,7 @@ package com.devpro.services;
 
 import java.io.File;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,20 +29,17 @@ public class UserService {
 	public RoleRepo roleRepo;
 
 	public User findUserById(final int id) {
-
-		String sql = "select * from tbl_users where id = '" + id + "'";
-		Query query = entityManager.createNativeQuery(sql, User.class);
-		return (User) query.getSingleResult();
+		Optional<User> user = userRepo.findById(id);
+		if(user.isPresent())
+			return user.get();
+		throw new RuntimeException("Can't find User");
 	}
 
 	public Role findRoleById(final int id) {
-
-//		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
-//		Query query = entityManager.createQuery(jpql, Product.class);
-
-		String sql = "select * from tbl_roles where id = '" + id + "'";
-		Query query = entityManager.createNativeQuery(sql, Role.class);
-		return (Role) query.getSingleResult();
+		Optional<Role> role = roleRepo.findById(id);
+		if(role.isPresent())
+			return role.get();
+		throw new RuntimeException("Can't find role");
 	}
 
 	private boolean isEmptyUploadFile(MultipartFile[] images) {

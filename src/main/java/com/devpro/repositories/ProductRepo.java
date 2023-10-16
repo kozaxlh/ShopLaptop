@@ -11,7 +11,7 @@ import com.devpro.entities.Product;
 
 
 @Repository 
-public interface ProductRepo extends JpaRepository<Product, Integer> {
+public interface ProductRepo extends GenericRepo<Product, Integer> {
 
 	
 	

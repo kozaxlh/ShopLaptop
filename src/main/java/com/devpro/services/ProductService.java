@@ -1,7 +1,9 @@
 package com.devpro.services;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -105,17 +107,14 @@ public class ProductService {
 //		return (Product) query.getSingleResult();
 //	}
 	public List<Product> findProductByStatus() {
-
-		String sql = "select * from tbl_products where status = '1'";
-		Query query = entityManager.createNativeQuery(sql, Product.class);
-		return query.getResultList();
+		return productRepo.findAll();
 	}
 
-	public List<Product> findProductById(int id) {
-
-		String sql = "select * from tbl_products where id = '" + id + "'";
-		Query query = entityManager.createNativeQuery(sql, Product.class);
-		return query.getResultList();
+	public Product findProductById(int id) {
+		Optional<Product> product = productRepo.findById(id);
+		if(product.isPresent())
+			return product.get();
+		throw new RuntimeException("Không tìm thấy sản phẩm");
 	}
 
 	private boolean isEmptyUploadFile(MultipartFile[] images) {

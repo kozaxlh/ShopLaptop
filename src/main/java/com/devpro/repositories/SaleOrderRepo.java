@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.devpro.entities.SaleOrder;
 
+import java.util.List;
+
 @Repository 
 public interface SaleOrderRepo extends JpaRepository<SaleOrder, Integer>  {
-
+    SaleOrder findById(int id);
+    SaleOrder findByCode(String code);
+    List<SaleOrder> findByUserId(int userID);
 }

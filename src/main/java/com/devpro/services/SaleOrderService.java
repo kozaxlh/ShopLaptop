@@ -3,10 +3,7 @@ package com.devpro.services;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -46,13 +43,10 @@ public class SaleOrderService {
 	SaleOrderProductsRepo saleOrderProductsRepo;
 
 	public List<SaleOrderProducts> findOrderProductByOrderId(int id) {
-
-//		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
-//		Query query = entityManager.createQuery(jpql, Product.class);
-
-		String sql = "select * from tbl_saleorder_products where saleorder_id = " + id;
-		Query query = entityManager.createNativeQuery(sql, SaleOrderProducts.class);
-		return query.getResultList();
+		SaleOrderProducts saleOrderProducts = saleOrderProductsRepo.findById(id).get();
+		List<SaleOrderProducts> list = new ArrayList<>();
+		list.add(saleOrderProducts);
+		return list;
 	}
 
 	public SaleOrder findSaleOrderById(int id) {
@@ -60,18 +54,14 @@ public class SaleOrderService {
 //		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
 //		Query query = entityManager.createQuery(jpql, Product.class);
 
-		String sql = "select * from tbl_saleorder where id = " + id;
-		Query query = entityManager.createNativeQuery(sql, SaleOrder.class);
-		return (SaleOrder) query.getSingleResult();
+		return saleOrderRepo.findById(id);
 	}
 	public SaleOrder findSaleOrderByCode(String code) {
 
 //		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
 //		Query query = entityManager.createQuery(jpql, Product.class);
 
-		String sql = "select * from tbl_saleorder where code = '" + code + "'";
-		Query query = entityManager.createNativeQuery(sql, SaleOrder.class);
-		return (SaleOrder) query.getSingleResult();
+		return saleOrderRepo.findByCode(code);
 	}
 	public List<SaleOrderProducts> findSaleOrderProductbyCode(String code) {
 
@@ -85,9 +75,7 @@ public class SaleOrderService {
 //		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
 //		Query query = entityManager.createQuery(jpql, Product.class);
 
-		String sql = "select * from tbl_saleorder where user_id = " + id;
-		Query query = entityManager.createNativeQuery(sql, SaleOrder.class);
-		return query.getResultList();
+		return saleOrderRepo.findByUserId(id);
 	}
 
 	@Transactional(rollbackOn = Exception.class)

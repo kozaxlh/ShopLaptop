@@ -22,17 +22,9 @@ import com.devpro.repositories.CategoryRepo;
 public class CategoryService {
 	@Autowired
 	CategoryRepo categoryRepo;
-	@PersistenceContext
-	protected EntityManager entityManager;
 
 	public Category findCategoryBySeo(final String seo) {
-
-//		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
-//		Query query = entityManager.createQuery(jpql, Product.class);
-
-		String sql = "select * from tbl_category where seo = '" + seo + "'";
-		Query query = entityManager.createNativeQuery(sql, Category.class);
-		return (Category) query.getSingleResult();
+		return categoryRepo.findByName(seo);
 	}
 
 	@Transactional(rollbackOn = Exception.class)
