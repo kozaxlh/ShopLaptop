@@ -65,7 +65,7 @@ public class SaleOrderService {
 	}
 	public List<SaleOrderProducts> findSaleOrderProductbyCode(String code) {
 
-		String sql = "select * from tbl_saleorder_products where saleorder_id = (select id from tbl_saleorder where code='" + code
+		String sql = "select * from saleorderproducts where saleorder_id = (select id from saleorder where code='" + code
 				+ "')";
 		Query query = entityManager.createNativeQuery(sql, SaleOrderProducts.class);
 		return query.getResultList();
@@ -74,6 +74,7 @@ public class SaleOrderService {
 
 //		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
 //		Query query = entityManager.createQuery(jpql, Product.class);
+		System.out.println("USER ID: " + id);
 
 		return saleOrderRepo.findByUserId(id);
 	}

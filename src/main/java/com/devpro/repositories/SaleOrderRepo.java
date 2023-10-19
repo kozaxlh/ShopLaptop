@@ -13,6 +13,6 @@ public interface SaleOrderRepo extends JpaRepository<SaleOrder, Integer>  {
     SaleOrder findById(int id);
     SaleOrder findByCode(String code);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM tbl_saleorder WHERE user_id = ?1")
+    @Query(nativeQuery = true, value = "SELECT * FROM saleorder WHERE user_id = ?1")
     List<SaleOrder> findByUserId(int userID);
 }
