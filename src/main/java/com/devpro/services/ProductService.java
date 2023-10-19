@@ -107,7 +107,13 @@ public class ProductService {
 //		return (Product) query.getSingleResult();
 //	}
 	public List<Product> findProductByStatus() {
-		return productRepo.findAll();
+		try {
+			return productRepo.findAll();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Product findProductById(int id) {

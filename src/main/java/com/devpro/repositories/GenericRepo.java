@@ -12,20 +12,20 @@ import java.util.List;
 @NoRepositoryBean
 public interface GenericRepo<O, T> extends JpaRepository<O, T>, JpaSpecificationExecutor<O> {
     @Override
-    @Query(value = "SELECT e FROM #{#entityName} e WHERE e.status = 0", nativeQuery = true)
+    @Query(value = "SELECT e FROM #{#tableName} e WHERE e.status = 0", nativeQuery = true)
     Page<O> findAll(Pageable pageable);
 
     @Override
-    @Query(value = "SELECT e FROM #{#entityName} e WHERE e.status = 0", nativeQuery = true)
+    @Query(value = "SELECT e FROM #{#tableName} e WHERE e.status = 0", nativeQuery = true)
     List<O> findAll();
 
     @Override
-    @Query(value = "SELECT count(*) FROM #{#entityName} e WHERE e.status = 0", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM #{#tableName} e WHERE e.status = 0", nativeQuery = true)
     long count();
 
-    @Query(value = "SELECT e FROM #{#entityName} e WHERE e.status = 1", nativeQuery = true)
+    @Query(value = "SELECT e FROM #{#tableName} e WHERE e.status = 1", nativeQuery = true)
     List<O> recycleBin();
 
-    @Query(value = "SELECT count(*) FROM #{#entityName} e", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM #{#tableName} e", nativeQuery = true)
     long countAll();
 }

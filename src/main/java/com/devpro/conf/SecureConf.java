@@ -26,7 +26,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
             		, "/font-awesome/**", "/summernote/**", "/files/**").permitAll()
             
             // thực hiện xác thực với các url kiểu ..../admin/....
-            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/admin/**").hasRole("ADMIN")
 //            .antMatchers("/admin/**").authenticated()
             
             .and() // kết hợp với điều kiện.
