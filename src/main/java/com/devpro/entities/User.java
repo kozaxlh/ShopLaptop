@@ -19,7 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "tbl_users")
+@Table(name = "user")
 public class User extends BaseEntity implements UserDetails{
 	private static final long serialVersionUID = -1956195527415323516L;
 
@@ -51,7 +51,7 @@ public class User extends BaseEntity implements UserDetails{
 	private String avatar;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "tbl_users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles = new ArrayList<Role>();
 	
 	public String getUsername() {

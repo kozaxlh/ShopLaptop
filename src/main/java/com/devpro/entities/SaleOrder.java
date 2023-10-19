@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "tbl_saleorder")
+@Table(name = "saleorder")
 public class SaleOrder extends BaseEntity {
 	@Column(name = "code")
 	private String code;

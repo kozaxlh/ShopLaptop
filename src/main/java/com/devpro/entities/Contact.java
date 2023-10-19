@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity // tương đương với 1 bảng
-@Table(name = "tbl_contact")
+@Table(name = "contact")
 public class Contact extends BaseEntity {
 
 	@Column(name = "first_name", nullable = false) // tương đương mới 1 cột

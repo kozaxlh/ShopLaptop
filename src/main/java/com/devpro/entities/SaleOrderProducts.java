@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_saleorder_products")
+@Table(name = "saleorderproducts")
 public class SaleOrderProducts extends BaseEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER)

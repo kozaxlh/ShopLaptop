@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "tbl_products")
+@Table(name = "product")
 public class Product extends BaseEntity {
 	@Column(name = "title", length = 500, nullable = false)
 	private String title;

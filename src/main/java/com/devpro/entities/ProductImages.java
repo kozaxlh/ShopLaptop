@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_products_images")
+@Table(name = "productimages")
 public class ProductImages extends BaseEntity {
 
 	@Column(name = "title", length = 45, nullable = false)

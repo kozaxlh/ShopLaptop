@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_category")
+@Table(name = "category")
 public class Category extends BaseEntity {
 
 	@Column(name = "name", length = 45, nullable = false)
