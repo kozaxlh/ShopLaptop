@@ -21,6 +21,7 @@
 			<!-- menu -->
 			<jsp:include page="/WEB-INF/views/admin/common/Menu.jsp"></jsp:include>
 			<!-- /menu -->
+
 			<div class="content"></div>
 		</div>
 	</div>

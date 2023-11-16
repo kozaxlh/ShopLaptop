@@ -15,6 +15,7 @@ public class AdminHomeController {
 	@RequestMapping(value = { "/admin/home", "/admin/", "/admin/index"}, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
+		request.getSession().setAttribute("role", "NhanVien");
 		return "admin/AdminHome";
 	}
 }

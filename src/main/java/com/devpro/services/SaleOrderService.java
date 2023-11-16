@@ -74,7 +74,6 @@ public class SaleOrderService {
 
 //		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
 //		Query query = entityManager.createQuery(jpql, Product.class);
-		System.out.println("USER ID: " + id);
 
 		return saleOrderRepo.findByUserId(id);
 	}

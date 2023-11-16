@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +30,7 @@ import com.devpro.services.UserService;
 
 
 @Controller
+//@PreAuthorize("hasRole('ADMIN')")
 public class AdminUserController {
 	@Autowired
 	public UserRepo userRepo;
@@ -39,7 +41,6 @@ public class AdminUserController {
 	@RequestMapping(value = { "/admin/list-user" }, method = RequestMethod.GET)
 	public String listUser(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
-		model.addAttribute("users", userRepo.findAll());
 		return "admin/user/list-user";
 	}
 
